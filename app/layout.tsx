@@ -10,7 +10,7 @@ const pressStart2P = Press_Start_2P({
 
 export const metadata: Metadata = {
   title: "Pixel Fisher",
-  description: "A pixel art fishing game",
+  description: "A small pixel-art fishing game for the browser: cast, hook a fish and reel it in with keyboard challenges.",
 };
 
 export default function RootLayout({

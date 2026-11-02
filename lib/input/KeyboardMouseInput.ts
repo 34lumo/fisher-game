@@ -56,23 +56,23 @@ export class KeyboardMouseInput implements GameInput {
     this.prevButtonDown = this.buttonDown;
   }
 
-  getHandPosition(_hand?: "left" | "right"): NormalizedPoint {
+  getHandPosition(): NormalizedPoint {
     return {
       x: this.mouseX / this.canvasWidth,
       y: this.mouseY / this.canvasHeight,
     };
   }
 
-  isPinching(_hand?: "left" | "right"): boolean {
+  isPinching(): boolean {
     return this.buttonDown;
   }
 
-  isPinchStart(_hand?: "left" | "right"): boolean {
+  isPinchStart(): boolean {
     if (this._pinchStarted) { this._pinchStarted = false; return true; }
     return false;
   }
 
-  isPinchEnd(_hand?: "left" | "right"): boolean {
+  isPinchEnd(): boolean {
     return !this.buttonDown && this.prevButtonDown;
   }
 
