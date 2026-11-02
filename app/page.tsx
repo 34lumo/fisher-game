@@ -57,7 +57,7 @@ export default function Home() {
           {/* Video background */}
           <video
             ref={videoRef}
-            src="/Animación_de_Imagen_Generada.mp4"
+            src="/intro.mp4"
             autoPlay
             muted
             loop
