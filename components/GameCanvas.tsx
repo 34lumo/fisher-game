@@ -281,6 +281,10 @@ export default function GameCanvas() {
     resize();
     window.addEventListener("resize", resize);
 
+    // next/font exposes Press Start 2P under a generated family name via --font-press-start
+    const pixelFont = getComputedStyle(document.body).getPropertyValue("--font-press-start").trim()
+      || '"Press Start 2P", monospace';
+
     // ── Draw helpers ──────────────────────────────────────────────────────
     function drawSky() {
       if (skyCanvas) ctx.drawImage(skyCanvas, 0, 0);
@@ -568,7 +572,7 @@ export default function GameCanvas() {
       else if (r.currentChallenge === "HOLD_KEY")    line = "HOLD SPACE 2s!";
       else                                            line = "MASH F  x8!";
 
-      ctx.font = '20px "Press Start 2P", monospace';
+      ctx.font = `20px ${pixelFont}`;
       ctx.textAlign = "center";
       ctx.fillStyle = "#000000";
       ctx.fillText(line, W / 2 + 2, 62);
@@ -585,7 +589,7 @@ export default function GameCanvas() {
         ctx.strokeStyle = "#aaaaaa"; ctx.lineWidth = 1;
         ctx.strokeRect(bx, by, bw, bh);
       } else if (r.currentChallenge === "MASH_KEY") {
-        ctx.font = '14px "Press Start 2P", monospace';
+        ctx.font = `14px ${pixelFont}`;
         ctx.fillStyle = "#000000";
         ctx.fillText(`F  x${r.mashCount} / 8`, W / 2 + 2, 86);
         ctx.fillStyle = "#ffeb3b";
@@ -593,7 +597,7 @@ export default function GameCanvas() {
       }
 
       // Progress pips
-      ctx.font = '12px "Press Start 2P", monospace';
+      ctx.font = `12px ${pixelFont}`;
       for (let i = 0; i < 3; i++) {
         ctx.fillStyle = i < r.challengeDone ? "#4caf50" : "#555555";
         ctx.fillText("■", W / 2 + (i - 1) * 20 - 5, 108);
@@ -603,7 +607,7 @@ export default function GameCanvas() {
     }
 
     function drawScore(): void {
-      ctx.font = '14px "Press Start 2P", monospace';
+      ctx.font = `14px ${pixelFont}`;
       ctx.textAlign = "left";
       ctx.fillStyle = "#000000";
       ctx.fillText(`SCORE: ${scoreRef.current}`, 22, 32);
@@ -620,7 +624,7 @@ export default function GameCanvas() {
         const t  = (now - ft.startTime) / DURATION;
         const fy = ft.y - t * 60;
         ctx.globalAlpha = 1 - t;
-        ctx.font = '20px "Press Start 2P", monospace';
+        ctx.font = `20px ${pixelFont}`;
         ctx.textAlign = "center";
         ctx.fillStyle = "#000000";
         ctx.fillText(ft.text, ft.x + 2, fy + 2);

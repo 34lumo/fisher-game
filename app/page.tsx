@@ -98,7 +98,7 @@ export default function Home() {
             {/* Blinking prompt */}
             <div
               style={{
-                fontFamily: '"Press Start 2P", monospace',
+                fontFamily: 'var(--font-press-start), monospace',
                 fontSize: "clamp(1rem, 2vw, 1.5rem)",
                 color: "#ffffff",
                 backgroundColor: "rgba(0, 0, 0, 0.6)",
